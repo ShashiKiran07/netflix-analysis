@@ -35,5 +35,23 @@ netflix = pd.read_csv('netflix_titles.csv')
 # print(netflix.country.unique())
 
 # Count of individual values in a column
-print(netflix.rating.value_counts())
+# print(netflix.rating.value_counts())
 
+# Mapping returns new series or df, doesn't change old data
+# mean_year = netflix.release_year.mean()
+# print(mean_year)
+# print(netflix.release_year.map(lambda p : p/mean_year))
+# print(netflix.release_year.head())
+
+# Apply
+# def apply_mean(row):
+#     row.release_year = row.release_year/mean_year
+#     return row
+
+# print(netflix.apply(apply_mean, axis='columns')['release_year'])
+
+# netflix['type_country'] = netflix.type + ' ' + netflix.country
+# print(netflix['type_country'])
+
+# groupby
+print(netflix.groupby('rating').release_year.min())
